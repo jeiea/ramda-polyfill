@@ -1,0 +1,39 @@
+{
+  "name": "ramda-polyfill",
+  "version": "0.0.1",
+  "description": "Use ramda.js as prototype-based chaining.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "rimraf dist && mkdir dist && babel index.js --out-file dist/ramda-polyfill.js --source-maps",
+    "minify": "uglifyjs dist/ramda-polyfill.js --source-map dist/ramda-polyfill.min.js.map -o dist/ramda-polyfill.min.js --mangle --compress",
+    "test": "mocha --compilers js:babel-core/register"
+  },
+  "keywords": [
+    "ramda",
+    "polyfill",
+    "chain"
+  ],
+  "author": "jeiea",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "~0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.13.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-mocha": "^4.8.0",
+    "mocha": "~3",
+    "rimraf": "~2",
+    "uglify-js": "~2",
+    "webpack": "^2.2.0-rc.3"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
