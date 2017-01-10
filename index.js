@@ -1,8 +1,6 @@
 /**
- * Insert ramda functions to Object's prototype.
- * Due to name collision, 'R' appended to name. e.g. anyR.
- * Use 'this' as last regular argument.
- * Unary function is evaluated without call parenthesis.
+ * ramda-polyfill.js
+ * Copyright 2017 jeiea ISC
  */
 'use strict';
 import R from 'ramda';
