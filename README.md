@@ -5,7 +5,7 @@ Insert ramda functions to Object's prototype.
 
 Due to name collision, 'R' appended to name. e.g. `anyR`
 
-It use 'this' as last regular argument.
+It uses 'this' as last regular argument.
 
 Unary function is evaluated without call parenthesis.
 
