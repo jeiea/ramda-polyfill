@@ -27,7 +27,7 @@ function getAccessibleVisibleFramesSizeDesc(win) {
       }
     })
     .filter(R.identity) // filter denied or invisible frame.
-    .sortByR(x => x.frameElement.clientWidth * x.frameElement.clientHeight)
+    .sortByR(x => -x.frameElement.clientWidth * x.frameElement.clientHeight)
     .appendR(win) // include itself.
     .reverseR; // size descending sort.
 }
