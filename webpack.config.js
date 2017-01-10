@@ -10,13 +10,14 @@ module.exports = [{
     path: __dirname + '/dist',
     filename: '[name].js',
     library: 'ramda-polyfill',
-    libraryTarget: 'commonjs-module'
+    libraryTarget: 'umd'
   },
   resolve: {
     modules: ['.', 'node_modules']
   },
+  target: 'node',
   externals: {
-    'ramda': 'ramda'
+    ramda: 'ramda'
   },
   module: {
     loaders: [{

@@ -1,6 +1,6 @@
 {
   "name": "ramda-polyfill",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Use ramda.js as prototype-based chaining.",
   "main": "dist/ramda-polyfill.js",
   "scripts": {
