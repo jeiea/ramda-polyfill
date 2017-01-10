@@ -1,9 +1,12 @@
 # ramda-polyfill
-ramda.js Object prototype polyfill.
+ramda.js Object prototype polyfill library.
 
 Insert ramda functions to Object's prototype.
-Due to name collision, 'R' appended to name. e.g. anyR.
+
+Due to name collision, 'R' appended to name. e.g. `anyR`
+
 It use 'this' as last regular argument.
+
 Unary function is evaluated without call parenthesis.
 
 So what you can do with this is
