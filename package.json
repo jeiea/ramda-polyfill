@@ -21,6 +21,13 @@
   "dependencies": {
     "ramda": "~0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeiea/ramda-polyfill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jeiea/ramda-polyfill/issues"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
