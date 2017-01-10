@@ -3,11 +3,10 @@
  * Due to name collision, 'R' appended to name. e.g. anyR.
  * Use 'this' as last regular argument.
  * Unary function is evaluated without call parenthesis.
- * e.g. [1,2,-3].reduceR.flipR([], (acc, e) => acc * 10 + e) === 117
  */
 'use strict';
 import R from 'ramda';
-export default R.__;
+export default R;
 export { ramdaPolyfill, polyfillSpecific };
 
 function defineProperty(name, val) {
