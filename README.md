@@ -16,10 +16,10 @@ Maybe not suitable for production.
 function getAccessibleVisibleFramesSizeDesc(win) {
   return win
     .mapR(w => w) // .toArray()
-    // for ease of adding recursive frame.
+    // for ease of processing recursive frame.
     .unfoldR(([frame = null, ...rest]) => {
       if (!frame) return false;
-      try { // for CORS violated frame.
+      try { // for CORS blocked exception.
         return [
           $(frame.frameElement).is(':visible') ? frame : null,
           rest.concat(R.map(w => w, frame))
@@ -28,10 +28,10 @@ function getAccessibleVisibleFramesSizeDesc(win) {
         return [null, rest];
       }
     })
-    .filter(R.identity) // filter denied or invisible frame.
-    .sortByR(x => -x.frameElement.clientWidth * x.frameElement.clientHeight)
+    .filter(w => w) // filter blocked or invisible frame.
     .appendR(win) // include itself.
-    .reverseR; // size descending sort.
+    // size descending sort.
+    .sortByR({x: frameElement} => -x.clientWidth * x.clientHeight);
 }
 ```
 See test/test.js for more examples.
