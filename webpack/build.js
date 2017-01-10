@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = [{
   devtool: 'source-map',
@@ -7,7 +6,7 @@ module.exports = [{
     'ramda-polyfill': './index.js',
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
     library: 'ramda-polyfill',
     libraryTarget: 'umd'
@@ -23,7 +22,7 @@ module.exports = [{
     loaders: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      include: path.resolve(__dirname, './index.js'),
+      include: path.resolve(__dirname, '../index.js'),
       query: {
         presets: ['es2015']
       }

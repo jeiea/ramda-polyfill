@@ -7,7 +7,7 @@ module.exports = [{
     'ramda-polyfill': './index.js',
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].min.js',
   },
   resolve: {
@@ -18,11 +18,11 @@ module.exports = [{
       enforce: 'pre',
       test: /\.js$/,
       loader: 'eslint-loader',
-      include: path.resolve(__dirname, './index.js'),
+      include: path.resolve(__dirname, '../index.js'),
     }, {
       test: /\.js$/,
       loader: 'babel-loader',
-      include: path.resolve(__dirname, './index.js'),
+      include: path.resolve(__dirname, '../index.js'),
       query: {
         presets: ['es2015']
       }
@@ -30,7 +30,7 @@ module.exports = [{
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      cacheFolder: path.resolve(__dirname, 'build/'),
+      cacheFolder: path.resolve(__dirname, '../build/'),
       debug: true,
       minimize: true,
       sourceMap: true,
