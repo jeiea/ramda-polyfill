@@ -1,6 +1,5 @@
 # ramda-polyfill [![npm version](https://badge.fury.io/js/ramda-polyfill.svg)](https://badge.fury.io/js/ramda-polyfill)
 
-## Synopsis
 ramda.js Object prototype polyfill library.
 
 It inserts ramda functions to Object's prototype.
