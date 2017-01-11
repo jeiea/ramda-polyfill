@@ -16,6 +16,7 @@ function defineProperty(name, val) {
 }
 
 function polyfillSpecific(name, enable) {
+  if (R[name] === undefined) throw `Name not found in ramda: ${name}`;
   if (R[name].length === undefined) return;
   if (enable === undefined) {
     enable = !(name + 'R' in Object.prototype);
