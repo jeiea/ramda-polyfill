@@ -21,6 +21,7 @@
   "dependencies": {
     "ramda": "~0"
   },
+  "homepage": "https://github.com/jeiea/ramda-polyfill",
   "repository": {
     "type": "git",
     "url": "https://github.com/jeiea/ramda-polyfill.git"
