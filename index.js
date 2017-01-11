@@ -24,14 +24,13 @@ function polyfillSpecific(name, enable) {
     delete Object.prototype[name + 'R'];
     return;
   }
-  let len = R[name].length;
-  if (name.match(/^(reduceBy|reduceWhile)$/)) len = 4;
+  let len = /^(reduceBy|reduceWhile)$/.test(name) ? 4 : R[name].length;
   let fn = len <= 1 ? function() {
     return R[name](this);
   } : function() {
     return R.curryN(Math.max(0, len - 1), R.partialRight(R[name], [this]));
   };
-  if (name.match(/^(compose.?|pipe.?|call)$/)) fn = function() {
+  if (/^(compose.?|pipe.?|call)$/.test(name)) fn = function() {
     return R.curryN(0, R.partialRight(R[name], [this]));
   };
   defineProperty(name, fn);

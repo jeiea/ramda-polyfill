@@ -126,14 +126,13 @@ function polyfillSpecific(name, enable) {
     delete Object.prototype[name + 'R'];
     return;
   }
-  var len = _ramda2.default[name].length;
-  if (name.match(/^(reduceBy|reduceWhile)$/)) len = 4;
+  var len = /^(reduceBy|reduceWhile)$/.test(name) ? 4 : _ramda2.default[name].length;
   var fn = len <= 1 ? function () {
     return _ramda2.default[name](this);
   } : function () {
     return _ramda2.default.curryN(Math.max(0, len - 1), _ramda2.default.partialRight(_ramda2.default[name], [this]));
   };
-  if (name.match(/^(compose.?|pipe.?|call)$/)) fn = function fn() {
+  if (/^(compose.?|pipe.?|call)$/.test(name)) fn = function fn() {
     return _ramda2.default.curryN(0, _ramda2.default.partialRight(_ramda2.default[name], [this]));
   };
   defineProperty(name, fn);

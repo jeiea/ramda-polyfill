@@ -1,11 +1,11 @@
 {
   "name": "ramda-polyfill",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Use ramda.js as prototype-based chaining.",
   "main": "dist/ramda-polyfill.js",
   "scripts": {
     "build": "webpack --config webpack/build.js",
-    "build:standalone": "webpack --config webpack/standalone.js",
+    "standalone": "webpack --config webpack/standalone.js",
     "clean": "rimraf dist",
     "dist": "npm test && npm run dist:force",
     "dist:force": "npm run clean && npm run build && npm run build:standalone",
