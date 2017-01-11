@@ -1,15 +1,10 @@
-# ramda-polyfill
+# ramda-polyfill [![NPM version](https://img.shields.io/npm/v/ramda-polyfill.svg)](https://www.npmjs.com/package/ramda-polyfill)
 
 ## Synopsis
 ramda.js Object prototype polyfill library.
 
 It inserts ramda functions to Object's prototype.
 Maybe not suitable for production.
-
-## Precautions
-- Due to name collision, 'R' appended to name. e.g. `anyR`
-- It uses 'this' as last regular argument.
-- Unary function is evaluated without call parenthesis.
 
 ## So what you can do with this is
 ```javascript
@@ -35,3 +30,9 @@ function getAccessibleVisibleFramesSizeDesc(win) {
 }
 ```
 See test/test.js for more examples.
+
+## Precautions
+- Due to name collision, 'R' appended to name. e.g. `anyR`
+- It uses 'this' as last regular argument.
+- Unary function is evaluated without call parenthesis.
+- It imports side effects by default and can toggle features by specific function.
