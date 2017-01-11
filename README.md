@@ -1,4 +1,4 @@
-# ramda-polyfill [![NPM version](https://img.shields.io/npm/v/ramda-polyfill.svg)](https://www.npmjs.com/package/ramda-polyfill)
+# ramda-polyfill [![npm version](https://badge.fury.io/js/ramda-polyfill.svg)](https://badge.fury.io/js/ramda-polyfill)
 
 ## Synopsis
 ramda.js Object prototype polyfill library.
