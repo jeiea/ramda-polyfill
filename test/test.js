@@ -1,5 +1,10 @@
 import assert from 'assert';
-import R from '../index';
+import R, {ramdaPolyfill, polyfillSpecific} from '../index';
+/*// for commonjs,
+var R = require('../index');
+var ramdaPolyfill = R.ramdaPolyfill;
+var polyfillSpecific = R.polyfillSpecific;
+R = R.default; //*/
 
 describe('ramda-polyfill test', () => {
 
@@ -35,4 +40,40 @@ describe('ramda-polyfill test', () => {
       assert.equal(u1.slice(0, cl), 'https://webpack.');
     });
   });
+
+  describe('Other facilities', () => {
+    it('Test self injection.', () => {
+      assert({}.ramdaPolyfillR !== undefined);
+      assert({}.polyfillSpecificR !== undefined);
+    });
+    it('Toggle all features', () => {
+      let a = {};
+      ramdaPolyfill(false);
+      let names = Object.keys(R);
+      names.forEach(k => assert(a[k + 'R'] === undefined, k));
+      ramdaPolyfill(); // toggle
+      let proto = Object.getPrototypeOf(a)
+      let descs = Object.getOwnPropertyDescriptors(proto);
+      let getrs = Object.keys(descs);
+      names.forEach(k => assert(getrs.indexOf(k + 'R') !== -1 || k === '__', k));
+    });
+    it('Toggle some features', () => {
+      let obj = {};
+      let rel = [];
+      let norel = [];
+
+      function toggle() {
+        rel.push(obj['sortByR'] === undefined);
+        norel.push(obj['addR'] === undefined);
+        polyfillSpecific('sortBy');
+      }
+      for (let i = 0; i < 3; i++) toggle();
+
+      assert(rel[0] !== rel[1] && rel[1] !== rel[2]);
+      assert(norel[0] === norel[1] && norel[1] === norel[2]);
+
+      polyfillSpecific('sortBy');
+    });
+  });
+
 });
