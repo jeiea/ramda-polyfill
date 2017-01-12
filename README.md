@@ -31,7 +31,7 @@ function getAccessibleVisibleFramesSizeDesc(win) {
 See test/test.js for more examples.
 
 ## Precautions
-- Due to name collision, 'R' appended to name. e.g. `anyR`
+- Due to name collision, 'R' is appended to name. e.g. `anyR`
 - It uses 'this' as last regular argument.
 - Unary function is evaluated without call parenthesis.
 - It imports side effects by default and can toggle features by specific function.
