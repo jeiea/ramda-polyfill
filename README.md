@@ -23,9 +23,9 @@ function getAccessibleVisibleFramesSizeDesc(win) {
       }
     })
     .filter(w => w) // filter blocked or invisible frame.
-    .appendR(win) // include itself.
     // size descending sort.
-    .sortByR({x: frameElement} => -x.clientWidth * x.clientHeight);
+    .sortByR(({ frameElement: x }) => -x.clientWidth * x.clientHeight)
+    .prependR(win); // include itself.
 }
 ```
 See test/test.js for more examples.
