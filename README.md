@@ -22,7 +22,7 @@ function getAccessibleVisibleFramesSizeDesc(win) {
         return [null, rest];
       }
     })
-    .filter(w => w) // filter blocked or invisible frame.
+    .filter(w => w) // filter out blocked or invisible frame.
     // size descending sort.
     .sortByR(({ frameElement: x }) => -x.clientWidth * x.clientHeight)
     .prependR(win); // include itself.

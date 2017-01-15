@@ -42,19 +42,19 @@ describe('ramda-polyfill test', () => {
   });
 
   describe('Other facilities', () => {
-    it('Test self injection.', () => {
+    it('Test self injection', () => {
       assert({}.ramdaPolyfillR !== undefined);
       assert({}.polyfillSpecificR !== undefined);
     });
     it('Toggle all features', () => {
       let a = {};
       ramdaPolyfill(false);
-      let names = Object.keys(R);
-      names.forEach(k => assert(a[k + 'R'] === undefined, k));
+      Object.keys(a).forEach(k => assert(!k.endsWith('R')));
       ramdaPolyfill(); // toggle
       let proto = Object.getPrototypeOf(a)
       let descs = Object.getOwnPropertyDescriptors(proto);
       let getrs = Object.keys(descs);
+      let names = Object.keys(R);
       names.forEach(k => assert(getrs.indexOf(k + 'R') !== -1 || k === '__', k));
     });
     it('Toggle some features', () => {

@@ -39,9 +39,15 @@ function polyfillSpecific(name, enable) {
 
 function ramdaPolyfill(enable) {
   Object.keys(R).forEach(name => polyfillSpecific(name, enable));
-  defineProperty('ramdaPolyfill', () => ramdaPolyfill);
-  defineProperty('polyfillSpecific', () => polyfillSpecific);
-  defineProperty('_', () => R);
+  if (enable || enable === undefined) {
+    defineProperty('ramdaPolyfill', () => ramdaPolyfill);
+    defineProperty('polyfillSpecific', () => polyfillSpecific);
+    defineProperty('_', () => R);
+  } else {
+    delete Object.prototype.ramdaPolyfillR;
+    delete Object.prototype.polyfillSpecificR;
+    delete Object.prototype._R;
+  }
 }
 
 ramdaPolyfill();
