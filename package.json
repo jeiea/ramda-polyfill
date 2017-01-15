@@ -8,7 +8,7 @@
     "standalone": "webpack --config webpack/standalone.js",
     "clean": "rimraf dist",
     "dist": "npm test && npm run dist:force",
-    "dist:force": "npm run clean && npm run build && npm run build:standalone",
+    "dist:force": "npm run clean && npm run build && npm run standalone",
     "test": "mocha --compilers js:babel-core/register",
     "test:chrome": "mocha --compilers js:babel-core/register --inspect --debug-brk"
   },

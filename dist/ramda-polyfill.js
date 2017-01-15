@@ -118,6 +118,7 @@ function defineProperty(name, val) {
 }
 
 function polyfillSpecific(name, enable) {
+  if (_ramda2.default[name] === undefined) throw 'Name not found in ramda: ' + name;
   if (_ramda2.default[name].length === undefined) return;
   if (enable === undefined) {
     enable = !(name + 'R' in Object.prototype);
@@ -142,15 +143,21 @@ function ramdaPolyfill(enable) {
   Object.keys(_ramda2.default).forEach(function (name) {
     return polyfillSpecific(name, enable);
   });
-  defineProperty('ramdaPolyfill', function () {
-    return ramdaPolyfill;
-  });
-  defineProperty('polyfillSpecific', function () {
-    return polyfillSpecific;
-  });
-  defineProperty('_', function () {
-    return _ramda2.default;
-  });
+  if (enable || enable === undefined) {
+    defineProperty('ramdaPolyfill', function () {
+      return ramdaPolyfill;
+    });
+    defineProperty('polyfillSpecific', function () {
+      return polyfillSpecific;
+    });
+    defineProperty('_', function () {
+      return _ramda2.default;
+    });
+  } else {
+    delete Object.prototype.ramdaPolyfillR;
+    delete Object.prototype.polyfillSpecificR;
+    delete Object.prototype._R;
+  }
 }
 
 ramdaPolyfill();
