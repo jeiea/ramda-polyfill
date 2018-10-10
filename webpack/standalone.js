@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = [{
   devtool: 'source-map',
@@ -14,32 +14,58 @@ module.exports = [{
     modules: ['.', 'node_modules']
   },
   module: {
-    loaders: [{
+    rules: [{
       enforce: 'pre',
-      test: /\.js$/,
-      loader: 'eslint-loader',
-      include: path.resolve(__dirname, '../index.js'),
+      test: /\.m?js$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: "eslint-loader",
+      options: {
+        // eslint options (if necessary)
+      }
     }, {
-      test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.resolve(__dirname, '../index.js'),
-      query: {
-        presets: ['es2015']
+      test: /\.m?js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015']
+        }
       }
-    }]
+    }],
+    // loaders: [{
+    //   enforce: 'pre',
+    //   test: /\.js$/,
+    //   loader: 'eslint-loader',
+    //   include: path.resolve(__dirname, '../index.js'),
+    // }, {
+    //   test: /\.js$/,
+    //   loader: 'babel-loader',
+    //   include: path.resolve(__dirname, '../index.js'),
+    //   query: {
+    //     presets: ['es2015']
+    //   }
+    // }]
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      cacheFolder: path.resolve(__dirname, '../build/'),
-      debug: true,
-      minimize: true,
+  optimization: {
+    minimizer: [new UglifyJsPlugin({
       sourceMap: true,
-      output: {
-        comments: false
-      },
-      compressor: {
-        warnings: false
+      uglifyOptions: {
+        inline: false,
       }
-    }),
-  ]
+    })]
+  },
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     cacheFolder: path.resolve(__dirname, '../build/'),
+  //     debug: true,
+  //     minimize: true,
+  //     sourceMap: true,
+  //     output: {
+  //       comments: false
+  //     },
+  //     compressor: {
+  //       warnings: false
+  //     }
+  //   }),
+  // ]
 }];

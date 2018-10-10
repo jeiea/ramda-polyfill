@@ -1,6 +1,6 @@
 /**
  * ramda-polyfill.js
- * Copyright 2017 jeiea ISC
+ * jeiea ISC
  */
 'use strict';
 import R from 'ramda';

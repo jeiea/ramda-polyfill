@@ -19,13 +19,9 @@ module.exports = [{
     ramda: 'ramda'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.resolve(__dirname, '../index.js'),
-      query: {
-        presets: ['es2015']
-      }
+      use: 'babel-loader'
     }]
-  }
+  },
 }];
