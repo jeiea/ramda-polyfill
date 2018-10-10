@@ -31,7 +31,8 @@ describe('ramda-polyfill test', () => {
 
   describe('Practical examples', () => {
     it('Test reduce, flip', () => {
-      assert([1, 2, -3].reduceR.flipR([], (acc, e) => acc * 10 + e)), 117;
+      console.log('asdf')
+      assert([1, 2, 3].reduceR.flipR([], (acc, e) => acc * 10 + e) === 123);
     });
     it('Test zipWith, takeWhile (common prefix)', () => {
       let u1 = 'https://webpack.github.io/';
