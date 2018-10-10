@@ -18,10 +18,7 @@ module.exports = [{
       enforce: 'pre',
       test: /\.m?js$/,
       exclude: /(node_modules|bower_components)/,
-      loader: "eslint-loader",
-      options: {
-        // eslint options (if necessary)
-      }
+      loader: "eslint-loader"
     }, {
       test: /\.m?js$/,
       exclude: /(node_modules|bower_components)/,
@@ -32,19 +29,6 @@ module.exports = [{
         }
       }
     }],
-    // loaders: [{
-    //   enforce: 'pre',
-    //   test: /\.js$/,
-    //   loader: 'eslint-loader',
-    //   include: path.resolve(__dirname, '../index.js'),
-    // }, {
-    //   test: /\.js$/,
-    //   loader: 'babel-loader',
-    //   include: path.resolve(__dirname, '../index.js'),
-    //   query: {
-    //     presets: ['es2015']
-    //   }
-    // }]
   },
   optimization: {
     minimizer: [new UglifyJsPlugin({
@@ -54,18 +38,4 @@ module.exports = [{
       }
     })]
   },
-  // plugins: [
-  //   new webpack.optimize.UglifyJsPlugin({
-  //     cacheFolder: path.resolve(__dirname, '../build/'),
-  //     debug: true,
-  //     minimize: true,
-  //     sourceMap: true,
-  //     output: {
-  //       comments: false
-  //     },
-  //     compressor: {
-  //       warnings: false
-  //     }
-  //   }),
-  // ]
 }];
