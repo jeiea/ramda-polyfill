@@ -32,6 +32,9 @@ See test/test.js for more examples.
 
 ## Precautions
 - Due to name collision, 'R' is appended to name. e.g. `anyR`
-- It uses 'this' as last regular argument.
+- It uses 'this' as the last regular argument.
 - Unary function is evaluated without call parenthesis.
 - It imports side effects by default and can toggle features by specific function.
+
+## Alternatives
+- [dot-compose](https://github.com/paldepind/dot-compose)
